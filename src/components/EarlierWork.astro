@@ -1,0 +1,11 @@
+---
+import { resume } from '../data/resume';
+---
+<div class="earlier">
+  {resume.earlier.map((e) => (
+    <div class="row">
+      <span class="name">{e.name}</span>
+      <span class="when">{e.year}</span>
+    </div>
+  ))}
+</div>
