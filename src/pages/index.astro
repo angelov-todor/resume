@@ -1,7 +1,41 @@
 ---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Project from '../components/Project.astro';
+import EarlierWork from '../components/EarlierWork.astro';
+import Skills from '../components/Skills.astro';
+import Footer from '../components/Footer.astro';
+import { resume } from '../data/resume';
 ---
-<!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><title>Todor Angelov</title></head>
-<body><h1>Coming soon.</h1></body>
-</html>
+<Base title={`${resume.name} — ${resume.title}`}>
+  <Header />
+  <main>
+    <Hero />
+
+    <section class="section" id="work">
+      <div class="section-head">
+        <div class="section-num">01</div>
+        <h2>Selected Work</h2>
+      </div>
+      {resume.marquee.map((p) => <Project project={p} />)}
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-num">02</div>
+        <h2>Earlier Work</h2>
+      </div>
+      <EarlierWork />
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-head">
+        <div class="section-num">03</div>
+        <h2>Skills &amp; Technologies</h2>
+      </div>
+      <Skills />
+    </section>
+  </main>
+  <Footer />
+</Base>
