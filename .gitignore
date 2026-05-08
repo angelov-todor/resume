@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.local
+.DS_Store
+
+# Brainstorm artifacts (kept locally, not in repo)
+.brainstorm/
+.superpowers/
+
+# Editor
+.vscode/
+.idea/
