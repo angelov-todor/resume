@@ -1,0 +1,35 @@
+---
+import { resume } from '../data/resume';
+import { resolveAvatar } from '../lib/avatar';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const avatarPath = fileURLToPath(new URL('../../public/avatar.jpg', import.meta.url));
+const hasLocalFile = existsSync(avatarPath);
+const avatar = resolveAvatar({
+  hasLocalFile,
+  email: resume.email,
+  base: import.meta.env.BASE_URL || '/',
+});
+---
+<section class="hero">
+  <div class="text">
+    <div class="kicker">{resume.kicker}</div>
+    <h1>{resume.name.split(' ').map((part, i, arr) => (
+      <>
+        {part}
+        {i < arr.length - 1 ? <br /> : <span class="amp">.</span>}
+      </>
+    ))}</h1>
+    <p class="lead">{resume.lead}</p>
+    <div class="meta">
+      {resume.stats.map((s) => (
+        <div class="stat">
+          <div class="num">{s.num}</div>
+          <div class="lbl">{s.lbl}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <img class="avatar" src={avatar.src} alt={`${resume.name} portrait`} width="88" height="88" loading="eager" />
+</section>
