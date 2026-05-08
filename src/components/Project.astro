@@ -1,0 +1,21 @@
+---
+import type { ProjectEntry } from '../data/resume';
+interface Props { project: ProjectEntry }
+const { project } = Astro.props;
+---
+<div class="project">
+  <div class="when">
+    {project.era}
+    <span class="role">{project.role}</span>
+  </div>
+  <div>
+    <h3>{project.title}</h3>
+    <p class="blurb">{project.blurb}</p>
+    <div class="stack">{project.stack.map((s) => <span>{s}</span>)}</div>
+    {project.highlights && (
+      <ul>
+        {project.highlights.map((h) => <li>{h}</li>)}
+      </ul>
+    )}
+  </div>
+</div>
