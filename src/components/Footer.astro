@@ -1,0 +1,15 @@
+---
+import { resume } from '../data/resume';
+const year = new Date().getFullYear();
+---
+<footer class="site" id="contact">
+  <div>
+    {resume.links.map((l, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true">·</span>}
+        <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>
+      </>
+    ))}
+  </div>
+  <div style="margin-top:16px">© {year} {resume.name} · Designed and built by hand</div>
+</footer>
