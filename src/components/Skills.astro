@@ -1,0 +1,11 @@
+---
+import { resume } from '../data/resume';
+---
+<div class="skills">
+  {resume.skills.map((g) => (
+    <div class="grp">
+      <div class="lbl">{g.label}</div>
+      <div class="val">{g.value}</div>
+    </div>
+  ))}
+</div>
