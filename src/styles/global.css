@@ -168,9 +168,10 @@ footer.site a { color: var(--muted); text-decoration: none; margin: 0 12px; bord
   body { padding: 0; font-size: 11pt; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   header.site nav, .toggle, footer.site { display: none; }
   header.site { margin-bottom: 24px; padding: 8px 0; border-bottom: 1px solid #ccc; }
-  .section { opacity: 1 !important; transform: none !important; margin-bottom: 32px; page-break-inside: avoid; }
-  .section-head { margin-bottom: 16px; }
-  .hero { margin-bottom: 32px; }
+  .section { opacity: 1 !important; transform: none !important; margin-bottom: 32px; }
+  .section-head { margin-bottom: 16px; page-break-after: avoid; }
+  .hero { grid-template-columns: 1fr; margin-bottom: 32px; }
+  .hero .avatar { display: none; }
   .hero h1 { font-size: 36pt; line-height: 1; margin-bottom: 12px; }
   .hero .lead { font-size: 12pt; }
   .hero .meta { margin-top: 16px; padding-top: 12px; }

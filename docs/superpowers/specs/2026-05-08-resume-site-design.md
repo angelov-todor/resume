@@ -55,7 +55,7 @@ JigSaw, Professional Services, OpenStack Assurance Adapter, Viptela xStats Adapt
 - **Language:** TypeScript for data + scripts; `.astro` files for templates.
 - **Styling:** Hand-written CSS with CSS variables. No utility framework, no preprocessor.
 - **Client JS:** ~1–2 KB total — theme toggle and `IntersectionObserver` for fade-in. No bundlers beyond Astro defaults.
-- **Hosting:** GitHub Pages, deployed via `actions/deploy-pages@v4`.
+- **Hosting:** GitHub Pages, deployed via `actions/deploy-pages@v5`.
 
 Astro chosen over vanilla because the user requested it; benefits are typed content data and component decomposition without shipping a runtime.
 
@@ -79,7 +79,7 @@ resume/
 │       ├── theme.ts               # toggle + persistence
 │       └── reveal.ts              # IntersectionObserver fade
 ├── public/
-│   ├── avatar.jpg                 # user-supplied (optional)
+│   ├── avatar.png                 # user-supplied (optional)
 │   └── favicon.svg
 ├── astro.config.mjs
 ├── tsconfig.json
@@ -166,8 +166,8 @@ Manual test: `Ctrl+P → Save as PDF` produces a 2–3 page document.
 
 ## Avatar
 
-- `public/avatar.jpg` (square, ≥256×256). User drops in a LinkedIn export or any preferred photo.
-- If `public/avatar.jpg` is missing at build time, hero renders a Gravatar fallback using the email `todor.angelov@wisertech.com` (md5 → `https://www.gravatar.com/avatar/<hash>?s=192&d=mp`).
+- `public/avatar.png` (square, ≥256×256). User drops in a LinkedIn export or any preferred photo.
+- If `public/avatar.png` is missing at build time, hero renders a Gravatar fallback using the email `todor.angelov@wisertech.com` (md5 → `https://www.gravatar.com/avatar/<hash>?s=192&d=mp`).
 - Rendered as an 88 px circular portrait next to the hero name. Optional, hidden cleanly if no avatar resolves.
 
 The fallback decision happens at build time in `index.astro` via a tiny `fs.existsSync` check; no runtime image-load races.
@@ -177,7 +177,7 @@ The fallback decision happens at build time in `index.astro` via a tiny `fs.exis
 `.github/workflows/deploy.yml`:
 
 - Triggers on push to `main`.
-- Steps: checkout, setup-node@v4 (lts), `npm ci`, `npm run build`, `actions/upload-pages-artifact@v3`, `actions/deploy-pages@v4`.
+- Steps: `actions/checkout@v6`, `actions/setup-node@v6` (Node 22), `npm ci`, `npm test`, `npm run build`, `actions/upload-pages-artifact@v5`, `actions/deploy-pages@v5`.
 - Astro `astro.config.mjs`: `site: 'https://angelov-todor.github.io'`, `base: '/resume'`.
 - One-time manual setup: GitHub repo settings → Pages → Source: "GitHub Actions".
 
@@ -217,7 +217,7 @@ These are confirmed and will be hardcoded in `src/data/resume.ts`:
 
 ## Open Items (User Provides After Implementation)
 
-- `public/avatar.jpg` — user-supplied photo. If absent at deploy time, Gravatar fallback kicks in.
+- `public/avatar.png` — user-supplied photo. If absent at deploy time, Gravatar fallback kicks in.
 - Final blurbs may need a polish pass after the user reviews the live page.
 
 ## Success Criteria
