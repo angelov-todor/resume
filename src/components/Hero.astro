@@ -2,9 +2,9 @@
 import { resume } from '../data/resume';
 import { resolveAvatar } from '../lib/avatar';
 import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 
-const avatarPath = fileURLToPath(new URL('../../public/avatar.jpg', import.meta.url));
+const avatarPath = join(process.cwd(), 'public', 'avatar.png');
 const hasLocalFile = existsSync(avatarPath);
 const avatar = resolveAvatar({
   hasLocalFile,

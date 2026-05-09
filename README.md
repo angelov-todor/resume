@@ -24,4 +24,4 @@ All resume content lives in `src/data/resume.ts`. Edit that file, push, done.
 
 ## Photo
 
-Drop a square photo at `public/avatar.jpg` (≥256×256). Without it, the hero falls back to Gravatar.
+Drop a square photo at `public/avatar.png` (≥256×256). Without it, the hero falls back to Gravatar.

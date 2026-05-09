@@ -14,7 +14,7 @@ export function resolveAvatar({ hasLocalFile, email, base }: AvatarInput): Avata
   const prefix = base === '/' ? '' : base.replace(/\/$/, '');
 
   if (hasLocalFile) {
-    return { type: 'local', src: `${prefix}/avatar.jpg` };
+    return { type: 'local', src: `${prefix}/avatar.png` };
   }
 
   const normalized = email.trim().toLowerCase();

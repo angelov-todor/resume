@@ -8,7 +8,7 @@ describe('resolveAvatar', () => {
       email: 'todor.angelov@wisertech.com',
       base: '/resume',
     });
-    expect(result).toEqual({ type: 'local', src: '/resume/avatar.jpg' });
+    expect(result).toEqual({ type: 'local', src: '/resume/avatar.png' });
   });
 
   it('returns gravatar URL with correct md5 when no local file', () => {
@@ -29,11 +29,11 @@ describe('resolveAvatar', () => {
 
   it('handles base path with no trailing slash', () => {
     const result = resolveAvatar({ hasLocalFile: true, email: 'x@y.z', base: '/resume' });
-    expect(result.src).toBe('/resume/avatar.jpg');
+    expect(result.src).toBe('/resume/avatar.png');
   });
 
   it('handles base path of "/"', () => {
     const result = resolveAvatar({ hasLocalFile: true, email: 'x@y.z', base: '/' });
-    expect(result.src).toBe('/avatar.jpg');
+    expect(result.src).toBe('/avatar.png');
   });
 });
